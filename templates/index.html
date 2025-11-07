@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solar Buddy ☀️</title>
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #fff9c4, #ffe082); /* pastel yellow → soft orange */ 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+        }
+        h1 { 
+            margin-top: 40px; 
+            color: #ffca28; 
+            font-size: 2.5em; 
+        }
+        form { 
+            margin-top: 20px; 
+            background: #ffffffb0; 
+            padding: 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        input[type="text"] { 
+            width: 280px; 
+            padding: 10px; 
+            border: 2px solid #ffca28; 
+            border-radius: 10px; 
+            font-size: 1em; 
+            outline: none; 
+        }
+        input[type="submit"] { 
+            background: #ffca28; 
+            color: #333; 
+            border: none; 
+            padding: 10px 15px; 
+            border-radius: 10px; 
+            font-size: 1em; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        input[type="submit"]:hover { 
+            background: #ffb300; 
+            transform: scale(1.05); 
+        }
+        .chat-container { 
+            width: 80%; 
+            max-width: 600px; 
+            background: #ffffffc9; 
+            margin-top: 30px; 
+            padding: 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            overflow-y: auto; 
+            flex-grow: 1; 
+        }
+        .message { 
+            margin-bottom: 12px; 
+        }
+        .user { 
+            background: #fff9c4; 
+            color: #ffb300; 
+            font-weight: bold; 
+            padding: 8px 12px; 
+            border-radius: 10px; 
+            align-self: flex-end; 
+            margin-left: auto; 
+        }
+        .bot { 
+            background: #dcedc8; 
+            color: #2e7d32; 
+            font-weight: bold; 
+            padding: 8px 12px; 
+            border-radius: 10px; 
+            align-self: flex-start; 
+            margin-right: auto; 
+        }
+        footer { 
+            margin-top: 20px; 
+            color: #777; 
+            font-size: 0.9em; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Solar Buddy ☀️</h1>
+    <form method="post">
+        <input type="text" name="prompt" placeholder="Ask one question about solar energy or weather..." required autofocus>
+        <input type="submit" value="Ask">
+    </form>
+    <div class="chat-container">
+        {% for sender, message in chat_history %}
+            <div class="message {{ 'user' if sender=='You' else 'bot' }}">
+                <b>{{ sender }}:</b> {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <footer>Made with ☀️ by Team Heliora</footer>
+</body>
+</html>
